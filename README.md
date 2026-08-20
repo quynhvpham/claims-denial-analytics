@@ -17,7 +17,7 @@ The answer isn't "Payer X sends the most claims" (a volume artifact) — it's
 **denial rate**, broken down **by reason code**, weighted **by dollar
 impact**.
 
-## Key findings (from the source data)
+🗝️## Key findings (from the source data)
 
 - **Texas Medicaid has the highest denial rate at ~23.8%** — roughly triple
   Aetna's rate (~7.9%) and well above the portfolio average (~15%).
@@ -30,7 +30,7 @@ impact**.
   per denial** (~$3,194), consistent with medical-necessity denials
   concentrating on higher-cost procedures rather than routine visits.
 
-## Tech stack
+⚙️## Tech stack
 
 - **SQL Server** (T-SQL) — schema design, data cleaning, analysis
 - **Power BI** — dashboard and DAX measures
@@ -39,7 +39,7 @@ No Python or other language is used anywhere in this pipeline — data
 loading, cleaning, and analysis are done entirely in T-SQL, which is
 deliberate: it's the skill this project is meant to demonstrate.
 
-## Data
+📊## Data
 
 Six source files (already provided, not generated):
 
@@ -95,45 +95,6 @@ claims-project/
     └── DAX_measures.md                    <- model relationships + DAX measures
 ```
 
-## Setup — run in this order
-
-### 1. Prerequisites
-- SQL Server (Developer or Express edition is fine) + SQL Server Management
-  Studio (SSMS) or Azure Data Studio
-- Power BI Desktop (optional, for the dashboard layer)
-
-### 2. Create the database and schema
-In SSMS, open and execute `sql/00_create_database_and_schema.sql`. This
-creates the `ClaimsDenialAnalytics` database and the empty star schema
-(with a seeded "NONE" row in `dim_denial_reason` for non-denied claims).
-
-### 3. Load the raw data into staging
-Copy all six CSVs to a path the SQL Server *service account* can read
-(e.g. `C:\data\` on the server itself). Open `sql/01_staging_and_load.sql`,
-**update the six file paths** in the `BULK INSERT` statements to match, and
-execute. If `BULK INSERT` can't reach the files (common with cloud-hosted
-or managed SQL Server), use the SSMS **Import Flat File** wizard instead —
-instructions are in the comments of that script.
-
-### 4. Run the cleaning pipeline
-Open `sql/02_data_cleaning.sql` and execute it top to bottom (or stage by
-stage, to inspect intermediate `#temp` tables while developing). This
-de-duplicates, standardizes `claim_status`, validates dates and dollar
-amounts, loads all five dimension tables, and loads `fact_claims`. Rows
-that fail validation are logged to `dbo.rejected_claims_log` — nothing is
-silently dropped. The final query reconciles raw row counts against
-loaded + quarantined rows (should always balance to zero unaccounted-for).
-
-### 5. Run the analysis
-Open `sql/03_analysis_queries.sql` and run any/all of the 8 queries. Each
-has a comment explaining the business question it answers.
-
-### 6. Connect Power BI
-Open Power BI Desktop -> **Get Data** -> **SQL Server** -> point at your
-server and the `ClaimsDenialAnalytics` database. Import the dimension and
-fact tables (not the staging/log tables). Follow `powerbi/DAX_measures.md`
-for relationship setup and the core DAX measures, then build visuals.
-
 ## What this project demonstrates
 
 - **Data modeling**: a star schema built on the source files' existing
@@ -154,8 +115,3 @@ for relationship setup and the core DAX measures, then build visuals.
 - **BI/dashboard skills**: a proper star-schema Power BI model with DAX
   measures that reconcile to the underlying SQL
 
-## Possible extensions
-
-- Predictive model for denial likelihood per claim
-- Days-in-A/R analysis extended to Pending claims (not just Paid)
-- Row-level security in Power BI to simulate per-payer-team access
