@@ -17,7 +17,7 @@ The answer isn't "Payer X sends the most claims" (a volume artifact) — it's
 **denial rate**, broken down **by reason code**, weighted **by dollar
 impact**.
 
-🗝️ ##Key findings (from the source data)
+ ##Key findings (from the source data)
 
 - **Texas Medicaid has the highest denial rate at ~23.8%** — roughly triple
   Aetna's rate (~7.9%) and well above the portfolio average (~15%).
@@ -30,7 +30,7 @@ impact**.
   per denial** (~$3,194), consistent with medical-necessity denials
   concentrating on higher-cost procedures rather than routine visits.
 
-⚙️ ##Tech stack
+ ##Tech stack
 
 - **SQL Server** (T-SQL) — schema design, data cleaning, analysis
 - **Power BI** — dashboard and DAX measures
@@ -39,7 +39,7 @@ No Python or other language is used anywhere in this pipeline — data
 loading, cleaning, and analysis are done entirely in T-SQL, which is
 deliberate: it's the skill this project is meant to demonstrate.
 
-📊 ##Data
+ ##Data
 
 Six source files (already provided, not generated):
 
