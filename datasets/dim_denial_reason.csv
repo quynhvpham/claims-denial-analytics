@@ -1,0 +1,7 @@
+denial_id,denial_code,denial_category,denial_description
+1,CO-197,Prior Auth,Precertification/authorization absent
+2,CO-50,Medical Necessity,"Non-covered, not deemed medically necessary"
+3,CO-16,Coding,Claim lacks required information/modifier
+4,CO-27,Eligibility,Expenses incurred after coverage terminated
+5,CO-29,Timely Filing,Time limit for filing has expired
+6,CO-18,Coding,Duplicate claim/service

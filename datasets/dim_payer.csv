@@ -1,0 +1,6 @@
+payer_id,payer_name,payer_type
+1,Aetna,Commercial
+2,UnitedHealthcare,Commercial
+3,Medicare,Medicare
+4,Texas Medicaid,Medicaid
+5,Cigna,Commercial

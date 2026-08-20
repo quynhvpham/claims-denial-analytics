@@ -1,0 +1,11 @@
+provider_id,provider_name,specialty,department
+1,Dr. A. Ramirez,Internal Medicine,Primary Care
+2,Dr. B. Chen,Cardiology,Cardiology
+3,Dr. C. Okafor,Orthopedics,Surgery
+4,Dr. D. Patel,Radiology,Imaging
+5,Dr. E. Nguyen,Family Medicine,Primary Care
+6,Dr. F. Martinez,General Surgery,Surgery
+7,Dr. G. Kim,Pathology,Lab
+8,Dr. H. Johnson,Emergency Medicine,ED
+9,Dr. I. Torres,Internal Medicine,Primary Care
+10,Dr. J. Williams,Orthopedics,Surgery
